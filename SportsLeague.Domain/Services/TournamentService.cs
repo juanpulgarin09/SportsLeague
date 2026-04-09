@@ -196,4 +196,4 @@ namespace SportsLeague.Domain.Services
             return tournamentTeams.Select(tt => tt.Team);
         }
     }
-}
+} 
