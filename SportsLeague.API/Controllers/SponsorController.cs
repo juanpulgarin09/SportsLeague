@@ -51,7 +51,7 @@ namespace SportsLeague.API.Controllers
             }
             catch (InvalidOperationException ex)
             {
-                return Conflict(new { message = ex.Message }); // 409
+                return Conflict(new { message = ex.Message }); 
             }
         }
 
@@ -62,15 +62,15 @@ namespace SportsLeague.API.Controllers
             {
                 var sponsor = _mapper.Map<Sponsor>(dto);
                 await _sponsorService.UpdateAsync(id, sponsor);
-                return NoContent(); // 204
+                return NoContent(); 
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message }); // 404
+                return NotFound(new { message = ex.Message }); 
             }
             catch (InvalidOperationException ex)
             {
-                return Conflict(new { message = ex.Message }); // 409
+                return Conflict(new { message = ex.Message }); 
             }
         }
 
@@ -80,11 +80,11 @@ namespace SportsLeague.API.Controllers
             try
             {
                 await _sponsorService.DeleteAsync(id);
-                return NoContent(); // 204
+                return NoContent(); 
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message }); // 404
+                return NotFound(new { message = ex.Message }); 
             }
         }
 
@@ -102,15 +102,15 @@ namespace SportsLeague.API.Controllers
                 var linked = tournaments.First(ts => ts.Id == created.Id);
                 var responseDto = _mapper.Map<TournamentSponsorResponseDTO>(linked);
 
-                return StatusCode(201, responseDto); // 201 Created
+                return StatusCode(201, responseDto); 
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message }); // 404
+                return NotFound(new { message = ex.Message }); 
             }
             catch (InvalidOperationException ex)
             {
-                return Conflict(new { message = ex.Message }); // 409
+                return Conflict(new { message = ex.Message }); 
             }
         }
 
@@ -125,7 +125,7 @@ namespace SportsLeague.API.Controllers
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message }); // 404
+                return NotFound(new { message = ex.Message }); 
             }
         }
 
@@ -135,11 +135,11 @@ namespace SportsLeague.API.Controllers
             try
             {
                 await _sponsorService.UnlinkFromTournamentAsync(id, tid);
-                return NoContent(); // 204
+                return NoContent(); 
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { message = ex.Message }); // 404
+                return NotFound(new { message = ex.Message }); 
             }
         }
     }
